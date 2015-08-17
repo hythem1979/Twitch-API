@@ -12,7 +12,7 @@ $(document).ready(function() {
         $.getJSON(twitchapi + "/users/" + streem + clientid).success(function(user) {
           var logo = user["logo"] !== null ? user["logo"] : deflogo;
           var name = user["display_name"];
-
+          
           if (channel["stream"] == null) {
             $("<a href = \"http://www.twitch.tv/" + streem + "\" target=\"_blank\" class=\"list-group-item clearfix\"><span><img class = \"img-circle ico\" src=\"" + logo + "\" alt=\"" + streem + "\" height=\"42\" width=\"42\"></span><span>" + name + "</span></a></div>").appendTo('#offline');
 
@@ -20,7 +20,8 @@ $(document).ready(function() {
             $("#count-offline").text(offlinenum.toString());
           } else {
             var status = channel["stream"]["channel"]["status"];
-            $("<a href = \"http://www.twitch.tv/" + streem + "\" target=\"_blank\" class=\"list-group-item clearfix\"><span class = \"pull-left\"><img class = \"img-circle ico\" src=\"" + logo + "\" alt=\"" + streem + "\" height=\"42\" width=\"42\"></span><span> " + name + "</span><br><small class =\"text-warning\">" + status + "</small></a></div>").appendTo('#online');
+            var viewers = channel["stream"]["viewers"];
+            $("<a href = \"http://www.twitch.tv/" + streem + "\" target=\"_blank\" class=\"list-group-item clearfix\"><span class=\"badge  pull-right\"><span class=\"glyphicon glyphicon-eye-open\"></span> " + viewers + "</span><span class = \"pull-left\"><img class = \"img-circle ico\" src=\"" + logo + "\" alt=\"" + streem + "\" height=\"42\" width=\"42\"></span><span> " + name + "</span><br><small class =\"text-warning\">" + status + "</small></a></div>").appendTo('#online');
             onlinenum += 1;
             $("#count-online").text(onlinenum.toString());
           }
