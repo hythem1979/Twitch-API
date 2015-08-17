@@ -1,0 +1,7 @@
+#online > a{
+  color: #5cb85c;
+}
+
+#offline > a{
+  color: #d9534f;
+}
