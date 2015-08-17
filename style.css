@@ -1,11 +1,11 @@
-#online > a{
+#online > a {
   color: #5cb85c;
 }
 
-#offline > a{
+#offline > a {
   color: #d9534f;
 }
 
-.ico{
-  margin-right:5px;
+.ico {
+  margin-right: 5px;
 }
